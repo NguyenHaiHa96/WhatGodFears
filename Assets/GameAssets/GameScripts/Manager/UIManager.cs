@@ -22,6 +22,7 @@ public class UIManager : GameSingleton<UIManager>
     {
         base.Awake();
         OnInit();
+        CanvasGameplay.OnOpen();
     }
 
     public override void OnInit()

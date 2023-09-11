@@ -45,4 +45,9 @@ public class GameUnit : MonoBehaviour
 
     public float DeltaTime { get => Time.deltaTime; }
     public float FixedDeltaTime { get => Time.fixedDeltaTime; }
+
+    public virtual void SetTransformParent(Transform parent)
+    {
+        transform.parent = parent;
+    }
 }

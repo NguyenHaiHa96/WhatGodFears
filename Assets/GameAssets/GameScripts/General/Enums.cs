@@ -36,3 +36,10 @@ public enum UIID
 {
     Gameplay
 }
+
+public enum CardState
+{
+    Standby,
+    InHand,
+    InDiscard
+}
