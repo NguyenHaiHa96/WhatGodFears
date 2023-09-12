@@ -34,6 +34,34 @@ public class CardGlobalState : State<UICard>
     }
 }
 
+public class CardInDesk : State<UICard>
+{
+    public static CardInDesk istance = null;
+    public static CardInDesk Instance
+    {
+        get
+        {
+            istance ??= new CardInDesk();
+            return istance;
+        }
+    }
+
+    public override void OnEnter(UICard go)
+    {
+        
+    }
+
+    public override void OnExecute(UICard go)
+    {
+
+    }
+
+    public override void OnExit(UICard go)
+    {
+
+    }
+}
+
 public class CardStandbyState : State<UICard>
 {
     public static CardStandbyState istance = null;
@@ -45,9 +73,11 @@ public class CardStandbyState : State<UICard>
             return istance;
         }
     }
+
     public override void OnEnter(UICard go)
     {
-        this.LogMsg("Standby");
+        UIManager.Instance.CanvasGameplay.SetCardToStandby(go.TfCard);
+        go.TfPlaceHolder.localScale = Vector3.zero;
     }
 
     public override void OnExecute(UICard go)

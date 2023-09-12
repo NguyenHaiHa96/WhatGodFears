@@ -6,7 +6,8 @@ public class UIHandCard : GameUnit
 {
     [Header("UI Hand Card")]
     public Transform TfThreshold;
-    public Transform TfCardContainer;
+    public Transform TfCardsInHandContainer;
+    public Transform TfCardStandbyContainer;
     public List<UICard> UICardsInHand;
 
     public int NumberOfCards;
@@ -15,7 +16,7 @@ public class UIHandCard : GameUnit
     {
         for (int i = 0; i < ui_cards.Count; i++)
         {
-            ui_cards[i].SetTransformParent(TfCardContainer);
+            ui_cards[i].SetTransformParent(TfCardsInHandContainer);
             UICardsInHand.Add(ui_cards[i]);          
         }
 

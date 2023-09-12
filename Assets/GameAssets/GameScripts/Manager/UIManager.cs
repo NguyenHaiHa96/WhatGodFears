@@ -33,7 +33,6 @@ public class UIManager : GameSingleton<UIManager>
         {
             UICanvasPrefabDict.Add(canvases[i].UIID, canvases[i]);
         }
-
         CanvasGameplay = GetUI(UIID.Gameplay) as CanvasGameplay;
     }
 
