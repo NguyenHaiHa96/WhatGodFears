@@ -11,8 +11,10 @@ using TMPro;
 public class UICard : DraggableObject
 {
     [Header("UI Card")]
-    public RectTransform TfCard;
-    public RectTransform TfPlaceHolder;
+    public Transform TfCard;
+    public Transform TfPlaceHolder;
+    public RectTransform RectTfCard;
+    public RectTransform RectTfPlaceHolder;
     public LayoutElement LayoutElement;
     public TextMeshProUGUI TxtOrderInHand;
     public UIHandCard UIHandCard;
@@ -44,8 +46,8 @@ public class UICard : DraggableObject
 
     private void Awake()
     {
-        startAnchoredPosition = TfCard.anchoredPosition;
-        previewAnchoredPosition = new(TfCard.anchoredPosition.x, TfCard.anchoredPosition.y + additionHeight);
+        startAnchoredPosition = RectTfCard.anchoredPosition;
+        previewAnchoredPosition = new(RectTfCard.anchoredPosition.x, RectTfCard.anchoredPosition.y + additionHeight);
         startSizeDelta = SizeDelta;
         InitStateMachine();
     }
@@ -61,7 +63,7 @@ public class UICard : DraggableObject
     public override void OnDrag(PointerEventData eventData)
     {
         base.OnDrag(eventData);
-        TfCard.position = eventData.position;   
+        RectTfCard.position = eventData.position;   
         if (!InputManager.Instance.CheckIsCardPassedHandThreshold(this))
         {
             stateMachine.ChangeState(CardStandbyState.Instance);
@@ -94,22 +96,28 @@ public class UICard : DraggableObject
 
     public void DrawFromDrawPile()
     {
-        TfPlaceHolder.SetParent(UIManager.Instance.CanvasGameplay.GetHandCardCardsInHandContainer());
-        TfCard.position = UIManager.Instance.CanvasGameplay.GetDrawPilePosition().position;
+        RectTfPlaceHolder.SetParent(UIManager.Instance.CanvasGameplay.GetHandCardCardsInHandContainer());
+        TfCard.SetParent(UIManager.Instance.CanvasGameplay.GetUIDrawPile().Transform);
+        TfCard.position = UIManager.Instance.CanvasGameplay.GetUIDrawPile().WorldPosition;
+        TfCard.localEulerAngles = Constant.Rotate90 * -1;
         TfCard.localScale = Vector2.zero;
+        Canvas.ForceUpdateCanvases();   
+        TfCard.DOMove(TfPlaceHolder.position, Constant.TimeDuration066);
+        TfCard.DOScale(Vector2.one, Constant.TimeDuration066);
+        TfCard.DORotate(Vector2.one, Constant.TimeDuration066);
     }
 
     public void OnShowPreview()
     {
-        TfCard.localScale = Constant.ScaleSize14;
-        TfCard.anchoredPosition = previewAnchoredPosition;
+        RectTfCard.localScale = Constant.ScaleSize14;
+        RectTfCard.anchoredPosition = previewAnchoredPosition;
 
     }
 
     public void OnHidePreview()
     {
-        TfCard.localScale = Vector2.one;
-        TfCard.anchoredPosition = startAnchoredPosition;
+        RectTfCard.localScale = Vector2.one;
+        RectTfCard.anchoredPosition = startAnchoredPosition;
     }
 
     #region Test

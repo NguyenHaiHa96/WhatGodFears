@@ -103,6 +103,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7196758972954846826}
+  - component: {fileID: 3885937956904161321}
   m_Layer: 0
   m_Name: UI - DrawPile
   m_TagString: Untagged
@@ -131,6 +132,19 @@ RectTransform:
   m_AnchoredPosition: {x: 92, y: -240}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &3885937956904161321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4993505146338706344}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6094c23e4748d7246a26d55b12518485, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PoolType: 0
 --- !u!1 &5434973668690586830
 GameObject:
   m_ObjectHideFlags: 0
@@ -186,12 +200,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PoolType: 0
-  UIID: 0
+  UIID: 1
   TfPopup: {fileID: 0}
   EaseOpen: 0
   EaseClose: 0
   IsDestroyOnClose: 0
   UIHandCard: {fileID: 8846421095307583622}
+  UIDrawPile: {fileID: 3885937956904161321}
 --- !u!223 &5434973668690586834
 Canvas:
   m_ObjectHideFlags: 0

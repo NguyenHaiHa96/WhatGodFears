@@ -76,8 +76,8 @@ public class CardStandbyState : State<UICard>
 
     public override void OnEnter(UICard go)
     {
-        UIManager.Instance.CanvasGameplay.SetCardToStandby(go.TfCard);
-        go.TfPlaceHolder.sizeDelta = Vector2.zero;
+        UIManager.Instance.CanvasGameplay.SetCardToStandby(go.RectTfCard);
+        go.RectTfPlaceHolder.sizeDelta = Vector2.zero;
     }
 
     public override void OnExecute(UICard go)
@@ -161,8 +161,8 @@ public class CardInHandState : State<UICard>
 
     public override void OnEnter(UICard go)
     {
-        go.TfPlaceHolder.sizeDelta = go.StartSizeDelta;
-        go.TfCard.position = go.TfPlaceHolder.position;
+        go.RectTfPlaceHolder.sizeDelta = go.StartSizeDelta;
+        go.RectTfCard.position = go.RectTfPlaceHolder.position;
     }
 
     public override void OnExecute(UICard go)

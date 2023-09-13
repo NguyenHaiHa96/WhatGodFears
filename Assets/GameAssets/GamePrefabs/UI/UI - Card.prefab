@@ -54,6 +54,8 @@ MonoBehaviour:
   PoolType: 0
   TfCard: {fileID: 5327714742613169101}
   TfPlaceHolder: {fileID: 3154863342985647502}
+  RectTfCard: {fileID: 5327714742613169101}
+  RectTfPlaceHolder: {fileID: 3154863342985647502}
   LayoutElement: {fileID: 3154863342985647497}
   TxtOrderInHand: {fileID: 4806569994109345318}
   UIHandCard: {fileID: 0}

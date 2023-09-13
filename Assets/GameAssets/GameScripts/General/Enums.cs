@@ -34,11 +34,13 @@ public enum GameMode
 
 public enum UIID
 {
+    None,
     Gameplay
 }
 
 public enum CardState
 {
+    None,
     Standby,
     InHand,
     InDiscard

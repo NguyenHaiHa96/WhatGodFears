@@ -10,7 +10,7 @@ public class CanvasGameplay : UICanvas
 
     public Transform GetHandCardThreshold() => UIHandCard.TfThreshold;
     public Transform GetHandCardCardsInHandContainer() => UIHandCard.TfCardsInHandContainer;
-    public Transform GetDrawPilePosition() => UIDrawPile.Transform;
+    public UIDrawPile GetUIDrawPile() => UIDrawPile;
 
     public void SetCardToStandby(Transform card)
     {
