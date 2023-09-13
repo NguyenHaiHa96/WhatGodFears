@@ -52,12 +52,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PoolType: 0
-  TfPlaceHolder: {fileID: 1855303922477979563}
   TfCard: {fileID: 5327714742613169101}
+  TfPlaceHolder: {fileID: 3154863342985647502}
   LayoutElement: {fileID: 3154863342985647497}
   TxtOrderInHand: {fileID: 4806569994109345318}
   UIHandCard: {fileID: 0}
   OrderInHand: 0
+  additionHeight: 100
 --- !u!114 &3154863342985647497
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -186,10 +187,10 @@ RectTransform:
   m_Father: {fileID: 3154863342985647502}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 200, y: 350}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &7413123596492627185
 GameObject:

@@ -16,6 +16,7 @@ public class EditorExclusive : GameSingleton<EditorExclusive>
         {
             UICard ui_Card = Instantiate(UICardPrefab);
             cards.Add(ui_Card);
+            ui_Card.StateMachine.ChangeState(CardOnDrawFromDrawPileState.Instance);
         }
         UIManager.Instance.CanvasGameplay.UIHandCard.AddCardsToHand(cards);
     }

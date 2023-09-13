@@ -1,24 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using Sirenix.OdinInspector;
+using DG.Tweening;
 using TMPro;
-using UnityEditor;
 
 public class UICard : DraggableObject
 {
     [Header("UI Card")]
-    public Transform TfPlaceHolder;
-    public Transform TfCard;
+    public RectTransform TfCard;
+    public RectTransform TfPlaceHolder;
     public LayoutElement LayoutElement;
     public TextMeshProUGUI TxtOrderInHand;
     public UIHandCard UIHandCard;
     public int OrderInHand;
 
-    [ShowInInspector]
+    [SerializeField] private float additionHeight;
+
     protected StateMachine<UICard> stateMachine;
+
+    private Vector2 startSizeDelta;
+    private Vector2 startAnchoredPosition;
+    private Vector2 previewAnchoredPosition; 
 
     [Button]
     private void SetPreferredWidthAndHeight()
@@ -32,12 +38,18 @@ public class UICard : DraggableObject
 
     #region Getter Setter
     public StateMachine<UICard> StateMachine { get { return stateMachine; } }
+
+    public Vector2 StartSizeDelta { get => startSizeDelta; }
     #endregion
 
     private void Awake()
     {
+        startAnchoredPosition = TfCard.anchoredPosition;
+        previewAnchoredPosition = new(TfCard.anchoredPosition.x, TfCard.anchoredPosition.y + additionHeight);
+        startSizeDelta = SizeDelta;
         InitStateMachine();
     }
+
     protected virtual void InitStateMachine()
     {
         stateMachine = new StateMachine<UICard>(this);
@@ -49,6 +61,7 @@ public class UICard : DraggableObject
     public override void OnDrag(PointerEventData eventData)
     {
         base.OnDrag(eventData);
+        TfCard.position = eventData.position;   
         if (!InputManager.Instance.CheckIsCardPassedHandThreshold(this))
         {
             stateMachine.ChangeState(CardStandbyState.Instance);
@@ -59,8 +72,44 @@ public class UICard : DraggableObject
     {
         if (!InputManager.Instance.CheckIsCardPassedHandThreshold(this))
         {
-            stateMachine.ChangeState(CardBackToHandState.Instance);
+            stateMachine.ChangeState(CardInHandState.Instance);
         }
+    }
+
+    public override void OnPointerEnter(PointerEventData eventData)
+    {
+        base.OnPointerEnter(eventData);
+        stateMachine.ChangeState(CardPreviewState.Instance);
+    }
+
+    public override void OnPointerExit(PointerEventData eventData)
+    {
+        base.OnPointerExit(eventData);
+        if (stateMachine.CurrentState == CardPreviewState.Instance)
+        {
+            stateMachine.ChangeState(CardInHandState.Instance);
+        }
+
+    }
+
+    public void DrawFromDrawPile()
+    {
+        TfPlaceHolder.SetParent(UIManager.Instance.CanvasGameplay.GetHandCardCardsInHandContainer());
+        TfCard.position = UIManager.Instance.CanvasGameplay.GetDrawPilePosition().position;
+        TfCard.localScale = Vector2.zero;
+    }
+
+    public void OnShowPreview()
+    {
+        TfCard.localScale = Constant.ScaleSize14;
+        TfCard.anchoredPosition = previewAnchoredPosition;
+
+    }
+
+    public void OnHidePreview()
+    {
+        TfCard.localScale = Vector2.one;
+        TfCard.anchoredPosition = startAnchoredPosition;
     }
 
     #region Test
