@@ -1,3 +1,5 @@
+using System.Collections;
+
 public abstract class State<T>
 {
     public abstract void OnEnter(T go);

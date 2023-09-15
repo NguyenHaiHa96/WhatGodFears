@@ -161,7 +161,6 @@ public class CardInHandState : State<UICard>
 
     public override void OnEnter(UICard go)
     {
-        go.RectTfPlaceHolder.sizeDelta = go.StartSizeDelta;
         go.RectTfCard.position = go.RectTfPlaceHolder.position;
     }
 
