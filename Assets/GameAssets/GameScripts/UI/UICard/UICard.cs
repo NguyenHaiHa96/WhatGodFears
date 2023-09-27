@@ -101,17 +101,15 @@ public class UICard : DraggableObject
         TfCard.SetParent(UIManager.Instance.CanvasGameplay.GetUIDrawPile().Transform);
         TfCard.position = UIManager.Instance.CanvasGameplay.GetUIDrawPile().WorldPosition;
         TfCard.localEulerAngles = Constant.Rotate90 * -1;
-        TfCard.localScale = Vector2.zero;
-        
-        Canvas.ForceUpdateCanvases();
-
+        TfCard.localScale = Vector2.zero;  
         RectTfPlaceHolder.DOSizeDelta(placeHolderDefaultSizeDelta, Constant.TimeDuration05).OnUpdate(() =>
         {
-            TfCard.position = TfPlaceHolder.position;
+            this.LogMsg(1);
+            Canvas.ForceUpdateCanvases();
         });
 
-        TfCard.DOScale(Vector2.one, Constant.TimeDuration066);
-        TfCard.DORotate(Vector2.one, Constant.TimeDuration066);
+        //TfCard.DOScale(Vector2.one, Constant.TimeDuration066);
+        //TfCard.DORotate(Vector2.one, Constant.TimeDuration066);
     }
 
     public void OnShowPreview()

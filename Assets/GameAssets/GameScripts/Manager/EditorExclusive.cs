@@ -23,7 +23,7 @@ public class EditorExclusive : GameSingleton<EditorExclusive>
             //UIManager.Instance.CanvasGameplay.UIHandCard.AddCardsToHand(ui_cards);
             UICard ui_Card = Instantiate(UICardPrefab);
             ui_cards.Add(ui_Card);
-            yield return Helper.GetWaitForSeconds(1);
+            yield return Helper.GetWaitForSeconds(0.2f);
             ui_Card.StateMachine.ChangeState(CardOnDrawFromDrawPileState.Instance);
         }    
     }
