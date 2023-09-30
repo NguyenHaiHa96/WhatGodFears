@@ -5,7 +5,7 @@ using Sirenix.OdinInspector;
 
 public class UIManager : GameSingleton<UIManager>
 {
-    private readonly string path = "Prefabs/UI/UICanvas/";
+    private readonly string path = "Prefabs/UIPrefab/UICanvas/";
 
     public Transform TfCanvasParent;
 
@@ -22,6 +22,11 @@ public class UIManager : GameSingleton<UIManager>
     {
         base.Awake();
         OnInit();
+    }
+
+    public override void FetchData()
+    {
+        base.FetchData();
         CanvasGameplay.OnOpen();
     }
 

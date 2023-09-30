@@ -8,12 +8,8 @@ public class CardGlobalState : State<UICard>
     public static CardGlobalState Instance
     {
         get
-        {
-            if (istance == null)
-            {
-                istance = new CardGlobalState();
-            }
-            //istance ??= new CardGlobalState();
+        {        
+            istance ??= new CardGlobalState();
             return istance;
         }
     }

@@ -7,7 +7,9 @@ public class CanvasGameplay : UICanvas
     [Header("Canvas Gameplay")]
     public UIHandCard UIHandCard;
     public UIDrawPile UIDrawPile;
+    public UICombatScene UICombatScene;
 
+    public Transform GetPlayerPosition() => UICombatScene.TfHeroPosition;
     public Transform GetHandCardThreshold() => UIHandCard.TfThreshold;
     public Transform GetHandCardCardsInHandContainer() => UIHandCard.TfCardsInHandContainer;
     public UIDrawPile GetUIDrawPile() => UIDrawPile;

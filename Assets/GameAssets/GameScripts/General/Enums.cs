@@ -19,17 +19,18 @@ public class Enums
 
 public enum BuildStatus
 {
-
+    None            
 }
 
 public enum GameState
 {
-
+    None,
+    Gameplay
 }
 
 public enum GameMode
 {
-
+    None
 }
 
 public enum UIID

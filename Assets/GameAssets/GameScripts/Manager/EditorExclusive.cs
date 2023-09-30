@@ -12,7 +12,8 @@ public class EditorExclusive : GameSingleton<EditorExclusive>
     [Button]
     private void SpawnCard(int numberOfCards)
     {
-       StartCoroutine(CoSpawnCard(numberOfCards));
+        InstantSpawnCard(numberOfCards);
+        //StartCoroutine(CoSpawnCard(numberOfCards));
     }
 
     private IEnumerator CoSpawnCard(int numberOfCards)
@@ -26,5 +27,17 @@ public class EditorExclusive : GameSingleton<EditorExclusive>
             yield return Helper.GetWaitForSeconds(0.2f);
             ui_Card.StateMachine.ChangeState(CardOnDrawFromDrawPileState.Instance);
         }    
+    }
+
+    private void InstantSpawnCard(int numberOfCards)
+    {
+        List<UICard> ui_cards = new();
+        for (int i = 0; i < numberOfCards; i++)
+        {
+
+            UICard ui_Card = Instantiate(UICardPrefab);
+            ui_cards.Add(ui_Card);
+            ui_Card.StateMachine.ChangeState(CardOnDrawFromDrawPileState.Instance);
+        }
     }
 }

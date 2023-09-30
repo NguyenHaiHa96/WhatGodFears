@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class DraggableObject : GameUnit, IDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler
+public class DraggableObject : UIElement, IDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler
 {
     public virtual void OnDrag(PointerEventData eventData)
     {
