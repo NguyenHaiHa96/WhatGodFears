@@ -17,5 +17,6 @@ public class CanvasGameplay : UICanvas
     public void SetCardToStandby(Transform card)
     {
         card.SetParent(UIHandCard.TfCardStandbyContainer);
+        card.position = UIHandCard.TfCardStandbyContainer.position;
     }
 }

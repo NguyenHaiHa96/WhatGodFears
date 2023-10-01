@@ -81,10 +81,14 @@ public class UICard : DraggableObject
 
     public override void OnEndDrag(PointerEventData eventData)
     {
-        if (!InputManager.Instance.CheckIsCardPassedHandThreshold(this))
-        {
-            stateMachine.ChangeState(CardInHandState.Instance);
-        }
+        //if (!InputManager.Instance.CheckIsCardPassedHandThreshold(this))
+        //{
+        //    stateMachine.ChangeState(CardInHandState.Instance);
+        //}
+        //else
+        //{
+
+        //}
     }
 
     public override void OnPointerEnter(PointerEventData eventData)
